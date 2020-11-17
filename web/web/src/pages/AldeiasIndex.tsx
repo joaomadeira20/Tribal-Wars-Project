@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight } from 'react-icons/fi'
 import api from '../services/api'
-import { response } from 'express'
+
 import EnhancedTable from '../components/table'
 
 
