@@ -18,7 +18,7 @@ export class createAldeias1605544330813 implements MigrationInterface {
                     name: 'name',
                     type: 'varchar'
                 },
-                               {
+                {
                     name: 'latitude',
                     type: 'varchar'
                 },
@@ -32,10 +32,9 @@ export class createAldeias1605544330813 implements MigrationInterface {
                 },
                 {
                     name: 'user_id',
-                    type: 'integer'
+                    type: 'integer',
+                    unsigned: true
                 }
-
-
             ],
             foreignKeys: [
                 {
