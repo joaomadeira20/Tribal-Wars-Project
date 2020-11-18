@@ -21,7 +21,9 @@ import api from '../services/api'
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import UpdateIcon from '@material-ui/icons/Update';
-import {Response} from 'express'
+import { Link } from 'react-router-dom'
+
+import { Response } from 'express'
 interface Aldeia {
   id: number;
   name: string;
@@ -170,7 +172,11 @@ const useToolbarStyles = makeStyles((theme: Theme) =>
 interface EnhancedTableToolbarProps {
   numSelected: number;
 }
+function teste() {
+  console.log('oi')
 
+
+}
 const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
@@ -190,12 +196,30 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
             Aldeias
           </Typography>
         )}
+
+
+      <Tooltip title="aa">
+
+
+        <Link to="/teste" className="enter-app">
+
+          <FilterListIcon>
+          </FilterListIcon>
+        </Link>
+
+
+      </Tooltip>
       {numSelected == 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="filter list">
-            <FilterListIcon />
+            <FilterListIcon>
+              <Link to={`teste/${numSelected}`} className="enter-app">
+                <h1>ir</h1>
+              </Link>
+            </FilterListIcon>
           </IconButton>
         </Tooltip>
+
       ) : numSelected == 1 ? (
         // <Tooltip title="Filter list">
         //   <IconButton aria-label="filter list">
@@ -256,6 +280,7 @@ export default function EnhancedTable() {
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Aldeia>('name');
   const [selected, setSelected] = React.useState<string[]>([]);
+  const [selectedId, setSelectedId] = React.useState<string[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -311,26 +336,38 @@ export default function EnhancedTable() {
       return;
     }
     setSelected([]);
+    setSelectedId([])
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
+  const handleClick = (event: React.MouseEvent<unknown>, name: string, id: number) => {
     const selectedIndex = selected.indexOf(name);
+    // console.log(id)
     let newSelected: string[] = [];
-    console.log(selectedIndex)
+    let newSelectedId: string[] = []
+    // console.log(selectedIndex)
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
+      newSelectedId = newSelectedId.concat(selected, id.toString());
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
+      newSelectedId = newSelectedId.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
       newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelectedId = newSelectedId.concat(selected.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
       );
+      newSelectedId = newSelectedId.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
     }
-    console.log(newSelected)
+    // console.log(newSelected)
     setSelected(newSelected);
+    setSelectedId(newSelectedId);
+    console.log(selectedId)
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -380,8 +417,9 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.name, row.id)}
                       role="checkbox"
+
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
@@ -400,6 +438,19 @@ export default function EnhancedTable() {
                       <TableCell align="right">{row.longitude}</TableCell>
                       <TableCell align="right">{row.continente}</TableCell>
                       <TableCell align="right">{row.username}</TableCell>
+                      <TableCell align="right">{
+                       
+
+
+                          <Link to={`teste/${row.id}`} className="enter-app">
+
+                            <FilterListIcon>
+                            </FilterListIcon>
+                          </Link>
+
+
+                      
+                      }</TableCell>
                     </TableRow>
                   );
                 })}
