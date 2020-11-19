@@ -1,4 +1,4 @@
-import Aldeias from '../model/Aldeias'
+import Aldeias from '../model/Villages'
 import Users from '../model/Users'
 import imagesView from './images_view'
 import users_view from './users_view'

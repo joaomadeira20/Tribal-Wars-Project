@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn, ManyToOne } from 'typeorm'
 import Images from './Images'
-import Aldeias from './Aldeias'
+import Villages from './Villages'
 @Entity('users')
 export default class Users {
     @PrimaryGeneratedColumn('increment')
@@ -15,21 +15,20 @@ export default class Users {
     @Column()
     password: string
 
-    @OneToMany(()=>Images, image=>image.user,{
-        cascade:['insert', 'update']
+    @OneToMany(() => Images, image => image.user, {
+        cascade: ['insert', 'update']
     })
-    @JoinColumn({name:'user_id'})
+    @JoinColumn({ name: 'user_id' })
     images: Images[]
 
     // @ManyToOne(()=>Aldeias, aldeia=>aldeia.users)
     // @JoinColumn({name:'user_id'})
     // aldeias: Aldeias
 
-    @OneToMany(()=>Aldeias, aldeia=>aldeia.user,{
-        cascade:['insert', 'update']
+    @OneToMany(() => Villages, village => village.user, {
+        cascade: ['insert', 'update']
     })
-    @JoinColumn({name:'user_id'})
-    aldeias: Aldeias[]
+    @JoinColumn({ name: 'user_id' })
+    village: Villages[]
 
-    
 }

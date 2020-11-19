@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class createAldeias1605544330813 implements MigrationInterface {
+export class createVillages1605544330813 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'aldeias',
+            name: 'villages',
             columns: [
                 {
                     name: 'id',
@@ -38,7 +38,7 @@ export class createAldeias1605544330813 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'AldeiaUser',
+                    name: 'VillagesUsers',
                     columnNames: ['user_id'],
                     referencedTableName: 'users',
                     referencedColumnNames: ['id'],
@@ -50,7 +50,7 @@ export class createAldeias1605544330813 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('aldeias')
+        await queryRunner.dropTable('villages')
     }
 
 }

@@ -1,6 +1,6 @@
 import { getRepository } from "typeorm"
 import { Request, Response } from 'express'
-import Aldeias from "../model/Aldeias"
+import Aldeias from "../model/Villages"
 import aldeiasView from '../views/aldeias_view'
 
 
@@ -48,11 +48,11 @@ export default {
     async update(request: Request, response: Response) {
 
         const { name,
-                latitude,
-                longitude,
-                continente,
-                user 
-            }  = request.body
+            latitude,
+            longitude,
+            continente,
+            user
+        } = request.body
         const aldeiaRep = getRepository(Aldeias)
 
         // console.log(images)
