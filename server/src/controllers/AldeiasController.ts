@@ -16,8 +16,11 @@ export default {
     async show(request: Request, response: Response) {
         const { id } = request.params
         const aldeiaRep = getRepository(Aldeias)
-        const aldeia = await aldeiaRep.findOneOrFail(id)
-        return response.json(aldeia)
+        const aldeia = await aldeiaRep.findOneOrFail(id, {
+            relations: ['user']
+        })
+        console.log(aldeia)
+        return response.json(aldeiasView.render(aldeia))
     },
     async create(request: Request, response: Response) {
 

@@ -12,9 +12,8 @@ export default {
             longitude: aldeia.longitude,
             continente: aldeia.continente,
             username: aldeia.user.name,
+            idUser: aldeia.user.id,
             user: {
-                id: aldeia.user.id,
-
                 email: aldeia.user.email
             }
 

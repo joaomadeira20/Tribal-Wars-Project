@@ -319,7 +319,7 @@ export default function EnhancedTable() {
 
 
   }
-  console.log(rows.length)
+  // console.log(rows.length)
 
 
 
