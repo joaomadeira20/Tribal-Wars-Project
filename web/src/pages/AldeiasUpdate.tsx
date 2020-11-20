@@ -1,6 +1,5 @@
 import React, { useEffect, useState, FormEvent } from "react";
 
-import L from 'leaflet';
 import { useHistory, useParams } from "react-router-dom";
 
 import { FiArrowLeft, FiPlus } from "react-icons/fi";
