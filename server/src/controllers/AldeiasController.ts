@@ -19,14 +19,14 @@ export default {
         const aldeia = await aldeiaRep.findOneOrFail(id, {
             relations: ['user']
         })
-        console.log(aldeia)
+        //console.log(aldeia)
         return response.json(aldeiasView.render(aldeia))
     },
     async create(request: Request, response: Response) {
 
         const { name, latitude, longitude, continente, user } = request.body
         const aldeiaRep = getRepository(Aldeias)
-        console.log(name, latitude, longitude, continente)
+        //console.log(name, latitude, longitude, continente)
 
         // console.log(images)
         const aldeia = aldeiaRep.create({

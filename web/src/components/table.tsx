@@ -367,7 +367,7 @@ export default function EnhancedTable() {
     // console.log(newSelected)
     setSelected(newSelected);
     setSelectedId(newSelectedId);
-    console.log(selectedId)
+    //console.log(selectedId)
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {

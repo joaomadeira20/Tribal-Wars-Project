@@ -4,7 +4,7 @@ import imagesView from './images_view'
 import users_view from './users_view'
 export default {
     render(aldeia: Aldeias) {
-        console.log(aldeia)
+        //console.log(aldeia)
         return {
             id: aldeia.id,
             name: aldeia.name,
