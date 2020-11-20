@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import api from '../services/api'
+
 
 import EnhancedTable from '../components/table'
+import NavBar from '../components/navbar'
 
 
 interface Aldeia {
@@ -20,7 +20,9 @@ interface Aldeia {
 export default function AldeiasIndex() {
     return (
         <div id="page-landing">
-            <div className="content-wrapper">               
+            <div className="content-wrapper">  
+             
+                    
                 {
                     EnhancedTable()
                 }

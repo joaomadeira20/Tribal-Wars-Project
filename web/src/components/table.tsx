@@ -189,7 +189,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
     >
       {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
+          {numSelected} selected 
         </Typography>
       ) : (
           <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
@@ -341,35 +341,65 @@ export default function EnhancedTable() {
 
   const handleClick = (event: React.MouseEvent<unknown>, name: string, id: number) => {
     const selectedIndex = selected.indexOf(name);
-    // console.log(id)
+    const selectedIndex2 = selectedId.indexOf(id.toString());
+    
     let newSelected: string[] = [];
     let newSelectedId: string[] = []
     // console.log(selectedIndex)
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
-      newSelectedId = newSelectedId.concat(selected, id.toString());
+      
+      // console.log("1a"+newSelectedId) 
+      // console.log(selected)
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
-      newSelectedId = newSelectedId.concat(selected.slice(1));
+     
+      // console.log("2a"+newSelectedId)
     } else if (selectedIndex === selected.length - 1) {
       newSelected = newSelected.concat(selected.slice(0, -1));
-      newSelectedId = newSelectedId.concat(selected.slice(0, -1));
+     
+      // console.log("3a"+newSelectedId)
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
+        
       );
-      newSelectedId = newSelectedId.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
+      
+     
     }
-    // console.log(newSelected)
+    if (selectedIndex2 === -1) {
+     
+      newSelectedId = newSelectedId.concat( selectedId, id.toString());
+      // console.log("1a"+newSelectedId) 
+      // console.log(selected)
+  
+    } else if (selectedIndex2 === 0) {
+      
+      newSelectedId = newSelectedId.concat(selectedId.slice(1));
+      // console.log("2a"+newSelectedId)
+    } else if (selectedIndex2 === selectedId.length - 1) {
+      
+      newSelectedId = newSelectedId.concat(selectedId.slice(0, -1));
+    
+      // console.log("3a"+newSelectedId)
+    } else if (selectedIndex2 > 0) {
+      
+      
+      newSelectedId = newSelectedId.concat(
+        selectedId.slice(0, selectedIndex2),
+        selectedId.slice(selectedIndex2 + 1),
+      );
+      
+    }
+    
     setSelected(newSelected);
     setSelectedId(newSelectedId);
-    //console.log(selectedId)
+    
+    
   };
-
+  
+  
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -439,17 +469,17 @@ export default function EnhancedTable() {
                       <TableCell align="right">{row.continente}</TableCell>
                       <TableCell align="right">{row.username}</TableCell>
                       <TableCell align="right">{
-                       
 
 
-                          <Link to={`teste/${row.id}`} className="enter-app">
 
-                            <FilterListIcon>
-                            </FilterListIcon>
-                          </Link>
+                        <Link to={`teste/${row.id}`} className="enter-app">
+
+                          <FilterListIcon>
+                          </FilterListIcon>
+                        </Link>
 
 
-                      
+
                       }</TableCell>
                     </TableRow>
                   );
@@ -462,6 +492,16 @@ export default function EnhancedTable() {
             </TableBody>
           </Table>
         </TableContainer>
+        <Tooltip title="Delete">
+          <IconButton aria-label="Delete">
+
+            <Link to={`teste/${selectedId}`} className="enter-app">
+              <DeleteIcon />
+             
+            </Link>
+
+          </IconButton>
+        </Tooltip>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"

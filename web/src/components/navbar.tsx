@@ -1,39 +1,36 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom'
 import '../styles/navbar.css'
 
 export default function Navbar(props: any) {
 
-    // Armazenamos a tab atual na variável para designar a classe correta do item
-    const [activeItem, setActivedItem] = useState(sessionStorage.getItem('@tribalwars-assistant/current-tab-navbar'));
+    const [activeItem2, setA] = useState('')
 
-    // Função para atualizar a tab atual
-    function updateCurrentTab(tab: string) {
-        sessionStorage.setItem('@tribalwars-assistant/current-tab-navbar', tab);
-    }
 
     return (
         <div className="navbar">
 
-            <a href="/users" className={"navbar-item" + (activeItem == "DASHBOARD" ? " navbar-item-selected" : "")} onClick={() => updateCurrentTab("DASHBOARD")}>
+
+
+            <Link to="/dashboard" className={"navbar-item" + (activeItem2 == "DASHBOARD" ? " navbar-item-selected" : "")} onClick={() => setA("DASHBOARD")}>
                 DASHBOARD
-            </a>
+            </Link>
 
-            <a href="/guerras" className={"navbar-item" + (activeItem == "GUERRAS" ? " navbar-item-selected" : "")} onClick={() => updateCurrentTab("GUERRAS")}>
+            <Link to="/guerras" className={"navbar-item" + (activeItem2 == "GUERRAS" ? " navbar-item-selected" : "")} onClick={() => setA("GUERRAS")}>
                 GUERRAS
-            </a>
+            </Link>
 
-            <a href="/users" className={"navbar-item" + (activeItem == "PERFIL" ? " navbar-item-selected" : "")} onClick={() => updateCurrentTab("PERFIL")}>
+            <Link to="/profile" className={"navbar-item" + (activeItem2 == "PERFIL" ? " navbar-item-selected" : "")} onClick={() => setA("PERFIL")}>
                 PERFIL
-            </a>
+            </Link>
 
-            <a href="/users" className={"navbar-item" + (activeItem == "MUNDOS" ? " navbar-item-selected" : "")} onClick={() => updateCurrentTab("MUNDOS")}>
+            <Link to="/worlds" className={"navbar-item" + (activeItem2 == "MUNDOS" ? " navbar-item-selected" : "")} onClick={() => setA("MUNDOS")}>
                 MUNDOS
-            </a>
+            </Link>
 
-            <a href="/users" className={"navbar-item" + (activeItem == "CONFIGURAÇÕES" ? " navbar-item-selected" : "")} onClick={() => updateCurrentTab("CONFIGURAÇÕES")}>
+            <Link to="/configs" className={"navbar-item" + (activeItem2 == "CONFIGURAÇÕES" ? " navbar-item-selected" : "")} onClick={() => setA("CONFIGURAÇÕES")}>
                 CONFIGURAÇÕES
-            </a>
+            </Link>
 
         </div>
     );
