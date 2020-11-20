@@ -1,14 +1,10 @@
 .navbar {    
     width: 100%;
-    background: linear-gradient(to right, #C5A76B, #C9B997);
+    background: linear-gradient(to right, #C9B997, #C5A76B);
     height: 50px;
     display: inline-flex;
-
-
-    align-items: center;
-    
-
-
+    text-align: center;
+    justify-content: center;
 }
 
 .itensNavbar {
@@ -19,5 +15,7 @@
 .linkNavbar {
     height: 50px;
     line-height: 50px;
-    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 400;
 }
