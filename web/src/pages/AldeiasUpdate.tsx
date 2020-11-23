@@ -2,10 +2,10 @@ import React, { useEffect, useState, FormEvent } from "react";
 
 import { useHistory, useParams } from "react-router-dom";
 
-import { FiArrowLeft, FiPlus } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import '../styles/updateAldeias.css'
 import api from "../services/api";
-interface Aldeia {
+/* interface Aldeia {
   id: number;
   name: string;
   latitude: string;
@@ -17,7 +17,7 @@ interface Aldeia {
     email: string
   }
 
-}
+} */
 
 
 interface AldeiasParams {
@@ -25,7 +25,7 @@ interface AldeiasParams {
 }
 export default function AldeiasUpdate(request: Request) {
   const history = useHistory()
-  const [aldeia, setAldeia] = useState<Aldeia>()
+  /* const [aldeia, setAldeia] = useState<Aldeia>() */
   const [name, setName] = useState('')
   const [continente, setContinente] = useState('')
   const [latitude, setLatitude] = useState('')
