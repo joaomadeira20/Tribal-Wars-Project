@@ -55,12 +55,12 @@ export default function CanvasMap() {
             let context = canvas.getContext("2d");
             if (context) {
 
-                for (var x = 0.5; x < 850; x += 50) {
+                for (var x = 0; x < 850; x += 55) {
                     context.moveTo(x, 0);
                     context.lineTo(x, 850);
                 }
 
-                for (var y = 0.5; y < 850; y += 50) {
+                for (var y = 0; y < 850; y += 40) {
                     context.moveTo(0, y);
                     context.lineTo(850, y);
                 }
@@ -68,18 +68,19 @@ export default function CanvasMap() {
                 let img = new Image();
                 img.src = image;
 
-                aldeias.map((row, index) => {                    
-                    context?.drawImage(img, (row.latitude * 50), (row.longitude * 50));   
-                    /* context?.fillRect((row.latitude * 50), (row.longitude * 50), 50, 50); */
-                })
-
+                context.fillStyle = '#5e6f1c';
+                context.fillRect(0, 0, canvas.width, canvas.height);
                 context.strokeStyle = 'grey';
                 context.stroke();
+
+                aldeias.map((row, index) => {                    
+                    context?.drawImage(img, (row.latitude * 55), (row.longitude * 40));   
+                })
 
             }
         }
     }
 
-    return <canvas id="canvasMap" ref={canvasRef} className="canvasMap" />
+    return <canvas width="512px" height="512px" id="canvasMap" ref={canvasRef} className="canvasMap" />
 
 }

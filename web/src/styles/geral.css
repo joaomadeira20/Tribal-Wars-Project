@@ -7,8 +7,15 @@
 .container-item {
     margin: 0px 0px 24px 0px;
     background-color: white;
+    display: flex;
 }
 
 .map {
+    overflow: scroll;
     height: 200px;
+    width: 50%;
+}
+
+.details-map {
+    padding: 26px;
 }
