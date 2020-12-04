@@ -16,7 +16,5 @@
    "subscribers": [
     "src/subscriber/**/*.ts"
    ],
-   "cli":{
-      "migrationsDir":"./src/database/migrations"
-   }
+   
 }
